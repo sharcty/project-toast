@@ -1,6 +1,8 @@
 import React from 'react';
 
+
 import Button from '../Button';
+import Toast from '../Toast';
 
 import styles from './ToastPlayground.module.css';
 
@@ -16,6 +18,11 @@ function ToastPlayground() {
     message,
     setMessage
   ] = React.useState('');
+
+  const [
+    showToast,
+    setShowToast
+  ] = React.useState(false);
   return (
     <div className={styles.wrapper}>
       <header>
@@ -23,6 +30,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
+      {showToast && <Toast setShowToast={setShowToast} variant={variant}>{message}</Toast>}
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
           <label
@@ -66,7 +74,7 @@ function ToastPlayground() {
           <div
             className={`${styles.inputWrapper} ${styles.radioWrapper}`}
           >
-            <Button>Pop Toast!</Button>
+            <Button onClick={() => setShowToast(true)}>Pop Toast!</Button>
           </div>
         </div>
       </div>
