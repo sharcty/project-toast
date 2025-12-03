@@ -1,15 +1,9 @@
-import React from "react";
-import {
-  AlertOctagon,
-  AlertTriangle,
-  CheckCircle,
-  Info,
-  X,
-} from "react-feather";
+import React from 'react';
+import { AlertOctagon, AlertTriangle, CheckCircle, Info, X } from 'react-feather';
 
-import VisuallyHidden from "../VisuallyHidden";
+import VisuallyHidden from '../VisuallyHidden';
 
-import styles from "./Toast.module.css";
+import styles from './Toast.module.css';
 
 const ICONS_BY_VARIANT = {
   notice: Info,
@@ -41,11 +35,11 @@ function Toast({ variant, dismissToast, id, children }) {
 }
 
 function defineStyle(variant) {
-  if (variant === "notice") {
+  if (variant === 'notice') {
     return styles.notice;
-  } else if (variant === "warning") {
+  } else if (variant === 'warning') {
     return styles.warning;
-  } else if (variant === "success") {
+  } else if (variant === 'success') {
     return styles.success;
   } else {
     return styles.error;

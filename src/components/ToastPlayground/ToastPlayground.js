@@ -1,27 +1,27 @@
-import React from "react";
+import React from 'react';
 
-import Button from "../Button";
-import ToastShelf from "../ToastShelf";
+import Button from '../Button';
+import ToastShelf from '../ToastShelf';
 
-import styles from "./ToastPlayground.module.css";
+import styles from './ToastPlayground.module.css';
 
-const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
+const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
-  const [variant, setVariant] = React.useState("notice");
+  const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
 
-  const [message, setMessage] = React.useState("");
+  const [message, setMessage] = React.useState('');
 
   const [toasts, setToasts] = React.useState([
     {
-      id: "0009809",
-      message: "Something went wrong!",
-      variant: "error",
+      id: '0009809',
+      message: 'Something went wrong!',
+      variant: 'error',
     },
     {
-      id: "0009807",
-      message: "17 photos uploaded",
-      variant: "success",
+      id: '0009807',
+      message: '17 photos uploaded',
+      variant: 'success',
     },
   ]);
 
@@ -35,12 +35,12 @@ function ToastPlayground() {
       },
     ];
     setToasts(nextToasts);
-    setMessage("");
-    setVariant("notice");
+    setMessage('');
+    setVariant('notice');
   }
 
   function dismissToast(id) {
-    const nextToasts = toasts.filter((toast) => {
+    const nextToasts = toasts.filter(toast => {
       return toast.id !== id;
     });
     setToasts(nextToasts);
@@ -56,17 +56,13 @@ function ToastPlayground() {
       <ToastShelf toasts={toasts} dismissToast={dismissToast}></ToastShelf>
       <div className={styles.controlsWrapper}>
         <form
-          onSubmit={(event) => {
+          onSubmit={event => {
             event.preventDefault();
             addToast(message, variant);
           }}
         >
           <div className={styles.row}>
-            <label
-              htmlFor="message"
-              className={styles.label}
-              style={{ alignSelf: "baseline" }}
-            >
+            <label htmlFor="message" className={styles.label} style={{ alignSelf: 'baseline' }}>
               Message
             </label>
             <div className={styles.inputWrapper}>
@@ -74,7 +70,7 @@ function ToastPlayground() {
                 id="message"
                 className={styles.messageInput}
                 value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                onChange={e => setMessage(e.target.value)}
               />
             </div>
           </div>
@@ -90,7 +86,7 @@ function ToastPlayground() {
                     name="variant"
                     checked={element === variant}
                     value={element}
-                    onChange={(e) => setVariant(e.target.value)}
+                    onChange={e => setVariant(e.target.value)}
                   />
                   {element}
                 </label>
