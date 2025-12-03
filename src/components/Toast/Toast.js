@@ -13,12 +13,12 @@ const ICONS_BY_VARIANT = {
 };
 
 function Toast({ variant, dismissToast, id, children }) {
-  const IconComponent = ICONS_BY_VARIANT[variant];
+  const Icon = ICONS_BY_VARIANT[variant];
 
   return (
-    <div className={`${styles.toast} ${defineStyle(variant)}`}>
+    <div className={`${styles.toast} ${styles[variant]}`}>
       <div className={styles.iconContainer}>
-        <IconComponent size={24} />
+        <Icon size={24} />
       </div>
       <p className={styles.content}>{children}</p>
       <button
@@ -32,18 +32,6 @@ function Toast({ variant, dismissToast, id, children }) {
       </button>
     </div>
   );
-}
-
-function defineStyle(variant) {
-  if (variant === 'notice') {
-    return styles.notice;
-  } else if (variant === 'warning') {
-    return styles.warning;
-  } else if (variant === 'success') {
-    return styles.success;
-  } else {
-    return styles.error;
-  }
 }
 
 export default Toast;
